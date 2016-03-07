@@ -17,8 +17,9 @@ dataTable <- rbind(featVector, xTrain, xTest)
 # sort out only the columns with mean and std
 result <- grep(".(m|M)ean(?!Freq)|std.", dataTable, perl=TRUE, value=TRUE)
 dataTable1 <- subset(dataTable, result)
-head(dataTable1)
 # add the activity labels to the data table
 labels <- rbind("",yTrain,yTest)
-dataTable1 <- cbind(labels,dataTable)
-# and this is as far as i got before i ran out of time. so no step 5
+dataTable2 <- cbind(labels,dataTable1)
+step5 <- colMeans(as.numeric(as.character(dataTable1)), na.rm=TRUE)
+write.table(step5)
+# and this is as far as i got before i ran out of time. so no working step 5
